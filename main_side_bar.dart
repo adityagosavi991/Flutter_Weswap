@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'profile.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,7 +13,9 @@ class MyApp extends StatelessWidget {
 class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    ListTile _sideBarSection(String label, IconData icon) {
+    //This is the custom Widget that I build, and then used it 4 times in the return statement.
+    ListTile _sideBarSection(String label, IconData icon, Widget page) {
+      //here page is the widget name that we want to navigate to, first import that file which contins that widget. Like I have imported Profile.dart.
       return ListTile(
         leading: Icon(icon),
         title: Text(
@@ -22,7 +25,9 @@ class AppDrawer extends StatelessWidget {
         onTap: () {
           // Update the state of the app.
           // ...
-          Navigator.pop(context);
+          //Navigator.pop(context);
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => page));
         },
       );
     }
@@ -60,12 +65,15 @@ class AppDrawer extends StatelessWidget {
                   ),
                 ),
               ),
-              //ALL THE SIDEBAR OPTIONS
-              _sideBarSection('My Profile', Icons.person),
-              _sideBarSection('Nearest Station', Icons.battery_charging_full),
-              _sideBarSection('Vehicle Details', Icons.list_alt_outlined),
-              _sideBarSection('About', Icons.info),
-              _sideBarSection('Log Out', Icons.logout),
+              //ALL THE SIDEBAR OPTIONS, instead of ProfilePage Widget in all the remaining arguments, use the correct page widget for the respective pages.
+              _sideBarSection('Profile', Icons.person, ProfilePage()),
+              _sideBarSection('Nearest Station', Icons.battery_charging_full,
+                  ProfilePage()), //Change it to Nearest Station Widget or Page
+              _sideBarSection('Vehicle Details', Icons.list_alt_outlined,
+                  ProfilePage()), //Change it
+              _sideBarSection('About', Icons.info, ProfilePage()), //Change it
+              _sideBarSection(
+                  'Log Out', Icons.logout, ProfilePage()), //Change it
             ],
           ),
         ));
