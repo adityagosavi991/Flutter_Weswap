@@ -45,27 +45,14 @@ class AppDrawer extends StatelessWidget {
             padding: EdgeInsets.zero,
             children: <Widget>[
               DrawerHeader(
-                //USER PROFILE IMAGE
                 decoration: BoxDecoration(
                   color: Colors.blue,
                 ),
-                child: CircleAvatar(
-                  backgroundImage: NetworkImage(
-                      'https://image.shutterstock.com/image-vector/vector-profile-icon-600w-380603071.jpg'),
-                  radius: 10,
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.all(20),
-                child: Text(
-                  'John Doe', //USER PROFILE NAME IN SIDEBAR
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 17,
-                  ),
-                ),
+                child: ProfileImage(),
               ),
               //ALL THE SIDEBAR OPTIONS, instead of ProfilePage Widget in all the remaining arguments, use the correct page widget for the respective pages.
+              _sideBarSection('Home', Icons.home,
+                  ProfilePage()), //Change it to Home page navigation.
               _sideBarSection('Profile', Icons.person, ProfilePage()),
               _sideBarSection('Nearest Station', Icons.battery_charging_full,
                   ProfilePage()), //Change it to Nearest Station Widget or Page
@@ -77,5 +64,38 @@ class AppDrawer extends StatelessWidget {
             ],
           ),
         ));
+  }
+}
+
+class ProfileImage extends StatefulWidget {
+  final imageURL =
+      'https://image.shutterstock.com/image-vector/vector-profile-icon-600w-380603071.jpg';
+  @override
+  ProfileImageState createState() => ProfileImageState();
+}
+
+//A stateful widget to keep the profile image and name updated.
+class ProfileImageState extends State<ProfileImage> {
+  final imageURL =
+      'https://image.shutterstock.com/image-vector/vector-profile-icon-600w-380603071.jpg';
+  final name = "John Doe";
+  @override
+  Widget build(BuildContext context) {
+    return ListView(padding: EdgeInsets.zero, children: <Widget>[
+      CircleAvatar(
+        backgroundImage: NetworkImage(imageURL),
+        radius: 50,
+      ),
+      Container(
+        padding: EdgeInsets.all(20),
+        child: Text(
+          name, //USER PROFILE NAME IN SIDEBAR
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 17,
+          ),
+        ),
+      )
+    ]);
   }
 }
