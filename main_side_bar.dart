@@ -45,11 +45,13 @@ class AppDrawer extends StatelessWidget {
             padding: EdgeInsets.zero,
             children: <Widget>[
               DrawerHeader(
+                padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   color: Colors.blue,
                 ),
                 child: ProfileImage(),
               ),
+
               //ALL THE SIDEBAR OPTIONS, instead of ProfilePage Widget in all the remaining arguments, use the correct page widget for the respective pages.
               _sideBarSection('Home', Icons.home,
                   ProfilePage()), //Change it to Home page navigation.
@@ -69,7 +71,7 @@ class AppDrawer extends StatelessWidget {
 
 class ProfileImage extends StatefulWidget {
   //final imageURL =
-      //'https://image.shutterstock.com/image-vector/vector-profile-icon-600w-380603071.jpg';
+  // 'https://image.shutterstock.com/image-vector/vector-profile-icon-600w-380603071.jpg';
   @override
   ProfileImageState createState() => ProfileImageState();
 }
