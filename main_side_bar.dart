@@ -68,8 +68,8 @@ class AppDrawer extends StatelessWidget {
 }
 
 class ProfileImage extends StatefulWidget {
-  final imageURL =
-      'https://image.shutterstock.com/image-vector/vector-profile-icon-600w-380603071.jpg';
+  //final imageURL =
+      //'https://image.shutterstock.com/image-vector/vector-profile-icon-600w-380603071.jpg';
   @override
   ProfileImageState createState() => ProfileImageState();
 }
